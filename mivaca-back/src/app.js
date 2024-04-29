@@ -1,5 +1,5 @@
 import express from "express";
-import { GroupRouter } from "./router/group.router.js";
+import { GroupRouter } from "../router/group.router.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
