@@ -21,9 +21,9 @@ const GroupController = () => {
     });
   };
 
-  const getAll = (_req, res) => {
+  const getAll = async (_req, res) => {
     console.log(2.1, "[Group] Controller Get All");
-    const groups = groupService.getAll();
+    const groups = await groupService.getAll();
 
     return res.status(200).json({
       groups,

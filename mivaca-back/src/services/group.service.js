@@ -1,30 +1,33 @@
 import { Model } from "../lib/model.js";
 
 const GroupService = () => {
-  console.log(3, "[Group] Service");
+  console.log(3, "[Group] Service Get All");
 
   const groupModel = Model();
 
   const getById = (id) => {
-    console.log(id);
-    console.log(3.1, "[Group] Service Get By Id");
+    console.log(3.1, "[Group] Service Get All");
+
     return groupModel.findUnique(id);
   };
 
-  const getAll = () => {
+  const getAll = async () => {
     console.log(3.1, "[Group] Service Get All");
-    return groupModel.findMany();
+
+    return await groupModel.findMany();
   };
 
   const create = (newGroup) => {
-    console.log(newGroup);
-    console.log(3.1, "[Group] Service Create");
+    console.log(3.1, "[Group] Service Get All");
+
     return groupModel.create(newGroup)
   };
 
   const editById = (id, group) => {
     console.log(id, group);
-    console.log(3.1, "[Group] Service Edit");
+    console.log(3.1, "[Group] Service Get All");
+
+    return groupModel.update(id, group);
   };
 
   const removeById = (id) => {

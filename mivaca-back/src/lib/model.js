@@ -1,24 +1,23 @@
-import connection from '.connection/';
+import pg from 'pg';
+const { Pool } = pg
+import "dotenv/config"; 
+
+const pool = new Pool();
+
 const Model = () => {
+
   const entities = [];
 
-  console.log(4, "[Group] Model");
-
   const findUnique = (id) => {
-    console.log(4.1, "[Database] Model findUnique");
-
-    return entities.find((entity) => entity.id === id);
+    return entities.find((entity) => (entity.id = id));
   };
 
-  const findMany = () => {
-    console.log(4.1, "[Database] Model findMany");
-
-    return entities;
+  const findMany = async () => {
+    const resultadoQueryGroups = await pool.query('SELECT id, ownerid, name, email, createdAt FROM Users')
+    return resultadoQueryGroups.rows;
   };
 
   const create = (entity) => {
-    console.log(4.1, "[Database] Model create");
-
     const maxId = entities.reduce((max, { id }) => Math.max(max, id), 0);
     const newId = (maxId + 1).toString();
     const newEntity = {
