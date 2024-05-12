@@ -1,9 +1,8 @@
 import pg from "pg";
-import "dotenv/config"; // Esto es suficiente para cargar las variables de entorno.
+import "dotenv/config"; 
+const { Pool } = pg; 
 
-const { Pool } = pg; // Asegúrate de extraer Pool con destructuring.
-
-const pool = new Pool({ // Usa esta única declaración para la instancia de Pool.
+const pool = new Pool({ 
     user: process.env.PGUSER,
     host: process.env.PGHOST,
     database: process.env.PGDATABASE,
@@ -11,4 +10,4 @@ const pool = new Pool({ // Usa esta única declaración para la instancia de Poo
     port: process.env.PGPORT,
 });
 
-export default pool;
+

@@ -1,20 +1,35 @@
+import "dotenv/config";
 import express from 'express';
-import { router } from './routes';
-import { GroupRouter } from './routes/group.router.js';
-import { UserRouter } from './routes/user.router.js';
-import { FriendRouter } from './routes/friend.router.js';
+import cors from 'cors';
+import mainRouter from './routers/async.router.js';
 
-const PORT = process.env.PORT || 3001;
 const app = express();
+const port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
+app.use(mainRouter());
 
-app.use('/api', router);
+/// ejemplo middleware
 
-app.use('/groups', GroupRouter().registerRoutes());
-app.use('/users', UserRouter().registerRoutes());
-app.use('/friends', FriendRouter().registerRoutes());
+// const router = express.Router();
+// app.use('/test', router);
 
-app.listen(PORT, () => {
-  console.log(`Express server running on port http://localhost:${PORT} 🚀`);
+// router.use((req, res, next) => {
+//     console.info('middleware 2');
+//     next();
+// });
+// router.use((req, res, next) => {
+//     console.info('middleware 1');
+//     throw 'error';
+//     next();
+// });
+// router.use((req, res, next) => {
+//     console.info('middleware 3');
+//     res.end();
+//     next();
+// });
+
+app.listen(port, () => {
+    console.info(`listening on port: ${port}`);
 });
