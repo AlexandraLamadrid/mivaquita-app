@@ -1,5 +1,5 @@
 import Router from "express-promise-router";
-import groupRouter from './groups.routers.js';
+import groupsRouter from '../routers/groups.router.js';
 import {
     connectDatabase,
     commitDatabase,
@@ -10,7 +10,7 @@ const AsyncRouter = () => {
     const router = Router();
 
     router.use(connectDatabase);
-    router.use("/groups", groupRouter());
+    router.use("/groups", groupsRouter());
     router.use(commitDatabase);
     router.use(rollbackDatabase);
 
