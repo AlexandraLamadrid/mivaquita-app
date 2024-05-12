@@ -13,20 +13,22 @@ const Model = () => {
   };
 
   const findMany = async () => {
-    const resultadoQueryGroups = await pool.query('SELECT id, ownerid, name, email, createdAt FROM Users')
+    const client = await pool.connect();
+    const resultadoQueryGroups = await client.query('SELECT id, ownerid, name, email, createdAt FROM groups')
+    client.release();
     return resultadoQueryGroups.rows;
   };
 
-  const create = (entity) => {
-    const maxId = entities.reduce((max, { id }) => Math.max(max, id), 0);
-    const newId = (maxId + 1).toString();
-    const newEntity = {
-      ...entity,
-      id: newId,
-    };
-    entities.push(newEntity);
+  const create = async (group) => {
+    const telefono = await pool.connect();
+    const valoresParaInsert = { 
+      text: 'insert into groups (ownerid, name, color, createdat) values ($1, $2, $3, NOW()) returning *',
+      values: [group.ownerid, group.name, group.color]
+    }
+    const resultadoInsertGroups = await telefono.query(valoresParaInsert);
+    telefono.release();
 
-    return newEntity;
+    return resultadoInsertGroups.rows[0];
   };
 
   const update = (id, newEntity) => {

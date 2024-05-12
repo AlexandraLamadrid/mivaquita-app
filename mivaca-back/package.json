@@ -2,9 +2,10 @@
   "name": "vaquita-backend",
   "version": "1.0.0",
   "description": "- Inicialización de Node `npm init --yes`\r - Setup de [Express](https://expressjs.com/) usando [Nodemon](https://nodemon.io). Nodemon permite reiniciar el servidor de Express.js en caso de modificar el codigo en pantalla.",
-  "main": "app.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/app.js",
     "migrations": "node src/utils/migrations.js"
   },

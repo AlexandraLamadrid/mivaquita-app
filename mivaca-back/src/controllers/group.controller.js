@@ -30,9 +30,9 @@ const GroupController = () => {
     });
   };
 
-  const create = (req, res) => {
+  const create = async (req, res) => {
     console.log(2.1, "[Group] Controller Create");
-    const newGroup = groupService.create(req.body);
+    const newGroup = await groupService.create(req.body);
     return res.status(201).json(newGroup);
   };
 
