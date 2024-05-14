@@ -1,16 +1,17 @@
-import Router from "express-promise-router";
-import groupsRouter from '../routers/groups.router.js';
-import {
-    connectDatabase,
-    commitDatabase,
-    rollbackDatabase
+import Router from "express-promise-router"
+import groupRouter from '../routers/groups.router.js';
+import { 
+    connectDatabase, 
+    commitDatabase, 
+    rollbackDatabase 
 } from "../lib/database.middleware.js";
+
 
 const AsyncRouter = () => {
     const router = Router();
 
     router.use(connectDatabase);
-    router.use("/groups", groupsRouter());
+    router.use("/groups", groupRouter());
     router.use(commitDatabase);
     router.use(rollbackDatabase);
 
