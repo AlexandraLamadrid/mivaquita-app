@@ -1,30 +1,39 @@
+import { UserService } from '../services/user.service.js';
+import { StatusCodes } from 'http-status-codes';
+
 const UserController = () => {
-    console.log(2, "[User] Controller");
-    const userService = new UserService();
+  console.log(2, '[User] Controller');
 
-    const getById = (_req, res) => {
-        console.log(2, "[User] Controller Get");
-        userService.getById(123);
-        return res.status(200).send();
-    };
+  const userService = UserService();
 
-    const signIn = (req, res) => {
-        console.log(2.1, "[User] Controller signIn");
-        userService.getById(123);
-        return res.status(200).send();
+  const getById = async (req, res) => {
+    console.log(2.1, '[User] Controller Get By Id');
+
+    const user = await userService.getById(req.params.id);
+
+    if (!user) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: `User with id ${req.params.id} does not exist` });
     }
 
-    const signUp = (req, res) => {
-        console.log(2.1, "[User] Controller signUp");
-        userService.create({});
-        return res.status(201).send();
-    }
+    return res.status(StatusCodes.OK).json({
+      user,
+    });
+  };
 
-    return {
-        getById,
-        signIn,
-        signUp,
-    };
+  const create = async (req, res) => {
+    console.log(2.1, '[User] Controller Create');
+
+    const user = await userService.create(req.body);
+
+    return res.status(StatusCodes.CREATED).json(user);
+  };
+
+  return {
+    getById,
+    create,
+  };
 };
 
-export default UserController;
+export { UserController };
