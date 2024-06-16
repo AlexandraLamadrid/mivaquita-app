@@ -59,7 +59,7 @@ const CreateAccountPage = () => {
               type="text"
               placeholder="Name"
               name="name"
-              icon="user"
+              icon="users"
               onChange={(value) => setName(value)}
             />
             <TextInput
@@ -67,7 +67,7 @@ const CreateAccountPage = () => {
               type="email"
               placeholder="Email"
               name="email"
-              icon="user"
+              icon="users"
               onChange={(value) => setEmail(value)}
             />
             <TextInput

@@ -1,22 +1,22 @@
 const UserService = () => {
     const getAll = () => {
-        console.log(3, "[User] Service Get All");
+        console.log(3, "[Users] Service Get All");
     };
 
     const getById = (id) => {
-        console.log(3, "[User] Service Get By Id", id);
+        console.log(3, "[Users] Service Get By Id", id);
     };
 
     const create = (newUser) => {
-        console.log(3, "[User] Service Create", newUser);
+        console.log(3, "[Users] Service Create", newUser);
     };
 
-    const editById = (id, user) => {
-        console.log(3, "[User] Service Edit", id, user);
+    const editById = (id, users) => {
+        console.log(3, "[Users] Service Edit", id, users);
     };
 
     const removeById = (id) => {
-        console.log(3, "[User] Service Remove", id);
+        console.log(3, "[Users] Service Remove", id);
     };
 
     return {

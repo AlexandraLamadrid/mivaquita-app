@@ -76,7 +76,7 @@ const LoginPage = () => {
               type="email"
               placeholder="Email"
               name="email"
-              icon="user"
+              icon="users"
               value={email}
               onChange={(value) => setEmail(value)}
             />
