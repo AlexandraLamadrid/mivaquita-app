@@ -1,4 +1,4 @@
-import { FriendRouter } from "./friend.router"; 
+import FriendRouter from "./friend.router"; 
 
 
 
@@ -14,4 +14,4 @@ import { FriendRouter } from "./friend.router";
 
 
 
-export { FriendRouter };
+export default FriendRouter;

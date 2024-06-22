@@ -1,21 +1,17 @@
-import express from 'express';
-import UserController from '../controllers/user.controller.js';
+import Router from "express-promise-router";
+import Controller from "../controllers/user.controller.js";
+import continuator from "../lib/continue.decorator.js";
 
-const UserRouter = () => {
-    console.log(1, "[User] Router");
-    const userController = UserController();
+const createUserRouter = () => {
 
-    const registerRoutes = () => {
-        console.log(1.1, "[User] Routes Registered");
+    const router = Router();
+    const controller = Controller();
 
-    const router = express.Router();
-    router.get("/:id", userController.getById);
-    router.post("/", userController.signUp);
+    router.get('/:id', continuator(controller.getById));
+    router.post('/', continuator(controller.signUp));
+
     return router;
-};
-return {
-    registerRoutes,
-    };
+    
 };
 
-export { UserRouter };
+export default createUserRouter;

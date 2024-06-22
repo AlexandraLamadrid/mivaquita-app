@@ -1,5 +1,5 @@
-import { UserService } from '../services/users.service.js';
-import { StatusCodes } from 'http-status-codes';
+import UserService from '../services/user.service.js';
+import StatusCodes from 'http-status-codes';
 
 const UserController = () => {
   console.log(2, '[User] Controller');
@@ -36,4 +36,4 @@ const UserController = () => {
   };
 };
 
-export { UserController };
+export default UserController; 
